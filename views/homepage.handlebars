@@ -1,0 +1,21 @@
+{{#each projects as |project| }}
+  <div class="card text-left">
+    <img class="card-img-top" src="holder.js/100px180/" alt="">
+    <div class="card-body">
+      <h4 class="card-title">{{project.name}}</h4>
+      <div class="card-text">
+        <p>{{project.description}}</p>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                Created: {{ format_date project.date_created}}
+              </div>
+              <div class="col">
+                Needed Funding: {{project.needed_funding}}
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/each}}
