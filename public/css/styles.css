@@ -1,0 +1,30 @@
+html {
+	background-color: #cbffcb;
+}
+
+body {
+	background-color: inherit !important;
+}
+
+#site-header {
+	margin-left: 20px;
+	border: 1px solid;
+	border-radius: 10px;
+	background-color: #cbffcb;
+	color: #3c1321;
+	text-align: center;
+	width: 250px;
+	box-shadow: 3px 3px #897474;
+}
+
+a {
+	color: #cbffcb !important;
+}
+
+.header-gray {
+	color: #ccc;
+}
+
+.card-body-green-background {
+	background-color: #cbffcb;
+}

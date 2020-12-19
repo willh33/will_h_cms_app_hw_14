@@ -1,0 +1,12 @@
+Models:
+	User
+		id
+		username
+		email
+		password
+
+	post
+		title
+		content
+		date
+		user_id

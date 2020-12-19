@@ -1,21 +1,51 @@
-{{#each projects as |project| }}
-  <div class="card text-left">
-    <img class="card-img-top" src="holder.js/100px180/" alt="">
-    <div class="card-body">
-      <h4 class="card-title">{{project.name}}</h4>
-      <div class="card-text">
-        <p>{{project.description}}</p>
-        <div class="container">
-            <div class="row">
-              <div class="col">
-                Created: {{ format_date project.date_created}}
-              </div>
-              <div class="col">
-                Needed Funding: {{project.needed_funding}}
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
+{{#each posts as |post| }}
+<div class="card text-center border-3 card-post" data-id={{ post.id }}>
+  <div class="card-header d-flex justify-content-between bg-dark">
+    <h4 class="header-gray">{{post.title}}</h4>
+    <h6 class="header-gray">Posted by {{ post.user.name }} on {{ format_date post.date }}</h6>
   </div>
+  <div class="card-body d-flex">
+    {{!-- <h5 class="card-title">Special title treatment</h5> --}}
+    <p class="card-text">{{post.content}}</p>
+    {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+  </div>
+</div>
 {{/each}}
+
+<script>
+  $(document).ready(() => {
+    $('div.card-post').on('click', (event) => {
+      //Get the ID of the post that was clicked
+      let el = event.target;
+      let postId = $(el).data('id');
+
+      //Add a card with a comment input for them to enter a comment on the post
+      let cardDiv = $(div).addClass('card text-center border-3');
+      let cardHeader = $(div).addClass('card-header d-flex justify-content-between b-dark');
+      let cardBody = $(div).addClass('card-body').text('Comment');
+
+      //<div class="form-floating">
+        //<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+        //<label for="floatingTextarea">Comments</label>
+      //</div>
+
+      //Build Form
+      let form = $(div).addClass('form-floating');
+      let textarea = $(textarea).addClass('form-control');
+      let inputLabel = $(label).attr('for', 'floatingTextarea').text('Comment');
+
+      form.append(textarea);
+      form.append(inputLabel);
+
+      cardBody.append(form);)
+
+      let submitButton = $(button).addClass('btn btn-secondary').text('Submit');
+
+      cardBody.append(submitButton);
+
+      //Build the card
+      cardDiv.append(cardHeader);
+      cardDiv.append(cardBody);
+    });
+  });
+</script>

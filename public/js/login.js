@@ -1,15 +1,12 @@
 const loginFormHandler = async (event) => {
-  // TODO: Add a comment describing the functionality of this statement
   event.preventDefault();
 
-  // TODO: Add a comment describing the functionality of these expressions
-  // Selects the email and password element from DOM and trim the value
+  // Collect values from the login form
   const email = document.querySelector('#email-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
 
   if (email && password) {
-    // TODO: Add a comment describing the functionality of this expression
-    // Calls the route to log the user in
+    // Send a POST request to the API endpoint
     const response = await fetch('/api/users/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
@@ -17,9 +14,32 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      // If successful, redirect the browser to the profile page
       document.location.replace('/');
     } else {
-      alert('Failed to log in');
+      alert(response.statusText);
+    }
+  }
+};
+
+const signupFormHandler = async (event) => {
+  event.preventDefault();
+
+  const name = document.querySelector('#name-signup').value.trim();
+  const email = document.querySelector('#email-signup').value.trim();
+  const password = document.querySelector('#password-signup').value.trim();
+
+  if (name && email && password) {
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      body: JSON.stringify({ name, email, password }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      document.location.replace('/');
+    } else {
+      alert(response.statusText);
     }
   }
 };
@@ -27,3 +47,7 @@ const loginFormHandler = async (event) => {
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);
+
+document
+  .querySelector('.signup-form')
+  .addEventListener('submit', signupFormHandler);
