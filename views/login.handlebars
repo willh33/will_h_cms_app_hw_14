@@ -1,41 +1,55 @@
 <div class="row">
   <div class="col-md-6">
-    <h2>Login</h2>
-
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
+    <div class="post-form">
+      <div class="card text-center border-3">
+        <div class="card-header d-flex justify-content-between bg-dark">
+          <h4 id="form-header" class="header-gray">Login</h4>
+        </div>
+        <div class="card-body text-start">
+          {{!-- <h5 class="card-title">Special title treatment</h5> --}}
+          <form class="form login-form">
+            <div class="mb-3">
+              <label for="email-login" class="form-label">Email</label>
+              <input type="text" class="form-control" id="email-login" placeholder="email@example.com">
+            </div>
+            <div class="mb-3">
+              <label for="password-login" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password-login" rows="3" placeholder="Enter Password">
+            </div>
+            <button id="create-post-btn" type="submit" class='btn btn-secondary'>Login</button>
+          </form>
+          {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+        </div>
       </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-    </form>
+    </div>
   </div>
   <div class="col-md-6">
-    <h2>Signup</h2>
-
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">name:</label>
-        <input class="form-input" type="text" id="name-signup" />
+    <div class="post-form">
+      <div class="card text-center border-3">
+        <div class="card-header d-flex justify-content-between bg-dark">
+          <h4 id="form-header" class="header-gray">Signup</h4>
+        </div>
+        <div class="card-body text-start">
+          {{!-- <h5 class="card-title">Special title treatment</h5> --}}
+          <form class="form signup-form">
+            <div class="mb-3">
+              <label for="name-signup" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name-signup" placeholder="Enter Name">
+            </div>
+            <div class="mb-3">
+              <label for="email-signup" class="form-label">Email</label>
+              <input type="text" class="form-control" id="email-signup" placeholder="email@example.com">
+            </div>
+            <div class="mb-3">
+              <label for="password-signup" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password-signup" rows="3" placeholder="Enter Password">
+            </div>
+            <button id="create-post-btn" type="submit" class='btn btn-secondary'>Signup</button>
+          </form>
+          {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+        </div>
       </div>
-      <div class="form-group">
-        <label for="email-signup">email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
 

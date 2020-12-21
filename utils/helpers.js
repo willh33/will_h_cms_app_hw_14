@@ -19,4 +19,5 @@ module.exports = {
       new Date(date).getFullYear() + 5
     }`;
   },
+  stringify: (post) => JSON.stringify(post),
 };

@@ -28,3 +28,7 @@ a {
 .card-body-green-background {
 	background-color: #cbffcb;
 }
+
+button {
+	width: 100%;
+}
