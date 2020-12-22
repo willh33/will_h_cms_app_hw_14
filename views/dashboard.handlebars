@@ -12,6 +12,7 @@
   <div class="card text-center border-3">
     <div class="card-header d-flex justify-content-between bg-dark">
       <h4 id="form-header" class="header-gray">Create New Post</h4>
+    <a id="back-btn" class="header-gray" href="/dashboard">Back</a>
     </div>
     <div class="card-body text-start">
       {{!-- <h5 class="card-title">Special title treatment</h5> --}}
@@ -25,7 +26,7 @@
         <textarea class="form-control" id="content" rows="3" placeholder="Content"></textarea>
       </div>
       <button id="create-post-btn" class='btn btn-secondary'>Create New Post</button>
-      <button id="delete-post-btn" class='btn btn-secondary'>Delete Post</button>
+      <button id="delete-post-btn" class='btn btn-secondary mt-2 d-none'>Delete Post</button>
       {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
     </div>
   </div>
@@ -44,17 +45,35 @@
     const myPosts = $('#my-posts');
     const headerTitle = $('#form-header');
     const submitBtn = $('#create-post-btn');
+    const deleteBtn = $('#delete-post-btn');
+
+    let id = "";
 
     //Update the page header to say dashboard
     $("#site-header").text("Your Dashboard");
 
-    $('button.new-post-btn').click(() => {
+    deleteBtn.click( async event => {
+      const response = await fetch('/api/posts/' + id, {
+          method: 'DELETE',
+        });
+
+        if (response.ok) {
+          document.location.replace('/dashboard');
+        } else {
+          alert(response.statusText);
+        }
+    });
+
+    $('button.new-post-btn').click((event) => {
       postForm.removeClass('d-none');
+      myPosts.addClass('d-none');
     });
 
     $('.edit-post-btn').click((event) => {
       //Get title and content of the clicked post
       let post = $(event.currentTarget).data('post');
+      id = post.id;
+      $('#delete-post-btn').removeClass('d-none');
 
       //Set the value of the title and content fields to update
       idEl.val(post.id);
@@ -71,6 +90,8 @@
     });
 
     $('#create-post-btn').click(async () => {
+      $('#delete-post-btn').addClass('d-none');
+
       const title = titleEl.val().trim();
       const content = contenttEl.val().trim();
       const id = idEl.val().trim();
